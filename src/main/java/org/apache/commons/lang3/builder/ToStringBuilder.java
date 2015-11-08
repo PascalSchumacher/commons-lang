@@ -137,6 +137,11 @@ public class ToStringBuilder implements Builder<String> {
         }
         defaultStyle = style;
     }
+    
+    public ToStringBuilder setOmitNulls(boolean omitNulls) {
+        style.setOmitNulls(omitNulls);
+        return this;
+    }
 
     //----------------------------------------------------------------------------
     /**

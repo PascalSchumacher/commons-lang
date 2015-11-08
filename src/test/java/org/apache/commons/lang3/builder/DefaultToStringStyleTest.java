@@ -88,6 +88,14 @@ public class DefaultToStringStyleTest {
         final String pBaseStr = p.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(p));
         assertEquals(pBaseStr + "[name=John Doe,age=33,smoker=false]", new ToStringBuilder(p).append("name", p.name).append("age", p.age).append("smoker", p.smoker).toString());
     }
+    
+    @Test
+    public void testOmitNulls() {
+        final Person p = new Person();
+        ToStringBuilder builder = new ToStringBuilder(p).setOmitNulls(true);
+        final String pBaseStr = p.getClass().getName() + "@" + Integer.toHexString(System.identityHashCode(p));
+        assertEquals(pBaseStr + "[age=0]",  builder.append("name", p.name).append("age", p.age).toString());
+    }
 
     @Test
     public void testLong() {
